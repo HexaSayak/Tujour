@@ -18,18 +18,18 @@ import com.finalyearproj.tujour.User.UserDashboard;
 public class SplashScreen extends AppCompatActivity {
 
     //Variables
-    TextView txtTujour,txtSlogan;
+    TextView txtTujour, txtSlogan;
     RelativeLayout relativeLayout;
 
 
     //Animation
-    Animation txtAnimation,layoutAnimation;
+    Animation txtAnimation, layoutAnimation;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
 
         //Hooks
@@ -65,8 +65,9 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, UserDashboard.class);
                 startActivity(intent);
-
+                finish();
             }
-        },3000);
+        },4000);
+
     }
 }
