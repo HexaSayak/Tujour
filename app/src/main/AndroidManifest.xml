@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Tujour"
         tools:targetApi="31">
         <activity
-            android:name=".UserDashboard"
+            android:name=".User.UserDashboard"
             android:exported="false" />
         <activity
             android:name=".Common.SplashScreen"
