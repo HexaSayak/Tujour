@@ -5,7 +5,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.view.ViewParent;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,14 +25,21 @@ public class OnBoarding extends AppCompatActivity {
     SliderAdapter sliderAdapter;
 
     TextView[] dots;
+
+    Button letsGetStarted;
+
+    Animation animation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //Hooks
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
+        letsGetStarted = findViewById(R.id.let_get_started);
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);
@@ -62,6 +74,19 @@ public class OnBoarding extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             addDots(position);
+
+            if (position == 0) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+            } else if (position == 1) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+            } else if (position == 2) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+            } else {
+
+                letsGetStarted.setAnimation(animation);
+                letsGetStarted.setVisibility(View.VISIBLE);
+            }
+
         }
 
         @Override
