@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.finalyearproj.tujour.R;
 import com.finalyearproj.tujour.User.UserDashboard;
 
-public class SplashScreen extends AppCompatActivity {
+public class  SplashScreen extends AppCompatActivity {
 
     //Variables
     TextView txtTujour, txtSlogan;
