@@ -3,7 +3,6 @@ package com.finalyearproj.tujour.Common;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 
 import com.finalyearproj.tujour.HelperClasses.SliderAdapter;
 import com.finalyearproj.tujour.R;
-import com.finalyearproj.tujour.User.Loginpage;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -50,8 +48,6 @@ public class OnBoarding extends AppCompatActivity {
 
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
-
-
     }
     private void addDots(int position){
         dots = new  TextView[4];
@@ -67,7 +63,6 @@ public class OnBoarding extends AppCompatActivity {
         if (dots.length > 0){
             dots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         }
-
     }
 
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
