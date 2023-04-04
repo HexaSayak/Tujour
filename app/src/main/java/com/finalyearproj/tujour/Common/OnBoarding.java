@@ -3,6 +3,8 @@ package com.finalyearproj.tujour.Common;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import com.finalyearproj.tujour.HelperClasses.SliderAdapter;
 import com.finalyearproj.tujour.R;
+import com.finalyearproj.tujour.User.UserDashboard;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -29,6 +32,10 @@ public class OnBoarding extends AppCompatActivity {
     Button letsGetStarted;
 
     Animation animation;
+
+    int currentPos;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,18 @@ public class OnBoarding extends AppCompatActivity {
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
     }
+
+
+    public void skip(View view){
+        startActivity(new Intent(this, UserDashboard.class));
+        finish();
+    }
+
+    public void next(View view){
+        viewPager.setCurrentItem(currentPos + 1);
+    }
+
+
     private void addDots(int position){
         dots = new  TextView[4];
         dotsLayout.removeAllViews();
@@ -75,6 +94,8 @@ public class OnBoarding extends AppCompatActivity {
         public void onPageSelected(int position) {
             addDots(position);
 
+            currentPos = position;
+
             if (position == 0) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
             } else if (position == 1) {
@@ -82,7 +103,7 @@ public class OnBoarding extends AppCompatActivity {
             } else if (position == 2) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
             } else {
-
+                animation = AnimationUtils.loadAnimation(OnBoarding.this,R.anim.bottom_anim);
                 letsGetStarted.setAnimation(animation);
                 letsGetStarted.setVisibility(View.VISIBLE);
             }
