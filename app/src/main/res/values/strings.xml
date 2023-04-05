@@ -22,5 +22,11 @@
     <string name="next_btn">Next</string>
     <string name="let_get_started">Lets Get Started</string>
 
-
+    <!-- Titles and Descriptions -->
+    <string name="search_text">Search...</string>
+    <string name="view_all">View All</string>
+    <string name="categories">Categories</string>
+    <string name="most_viewed_locations">Most Viewed</string>
+    <string name="featured_locations_description">All the locations that are featured and have the top demand in town!</string>
+    <string name="featured_locations">All Featured Locations</string>
 </resources>
