@@ -26,7 +26,7 @@ public class Loginpage extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().equals("RohitBabu7872") && password.getText().toString().equals("Fuckboy7872")) {
+                if (username.getText().toString().equals("RohitBabu7872") && password.getText().toString().equals("7872")) {
                     Toast.makeText(Loginpage.this, "Login successful", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(Loginpage.this, "Login failed", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@ package com.finalyearproj.tujour.Common;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -63,6 +64,7 @@ public class OnBoarding extends AppCompatActivity {
         if (dots.length > 0){
             dots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         }
+
     }
 
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
@@ -88,6 +90,8 @@ public class OnBoarding extends AppCompatActivity {
             }
 
         }
+
+
 
         @Override
         public void onPageScrollStateChanged(int state) {
