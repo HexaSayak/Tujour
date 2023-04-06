@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".User.Loginpage"
+    tools:context=".User.Login_Page"
     android:background="@drawable/lets_pack_bag">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
