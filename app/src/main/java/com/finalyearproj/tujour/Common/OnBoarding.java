@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.finalyearproj.tujour.HelperClasses.SliderAdapter;
 import com.finalyearproj.tujour.R;
+import com.finalyearproj.tujour.User.UserDashboard;
 
 public class OnBoarding extends AppCompatActivity {
 
@@ -28,8 +29,10 @@ public class OnBoarding extends AppCompatActivity {
     TextView[] dots;
 
     Button letsGetStarted;
+    Button nextbtn;
 
     Animation animation;
+    int currentPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class OnBoarding extends AppCompatActivity {
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         letsGetStarted = findViewById(R.id.let_get_started);
+        nextbtn=findViewById(R.id.next_btn);
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);
@@ -49,6 +53,12 @@ public class OnBoarding extends AppCompatActivity {
 
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
+    }
+    public void skip(View view){
+startActivity(new Intent(this, UserDashboard.class));
+    }
+    public void next(View view){
+    viewPager.setCurrentItem(currentPos+1);
     }
     private void addDots(int position){
         dots = new  TextView[4];
@@ -72,27 +82,27 @@ public class OnBoarding extends AppCompatActivity {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         }
-
         @Override
         public void onPageSelected(int position) {
             addDots(position);
-
+            currentPos=position;
             if (position == 0) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                nextbtn.setVisibility(View.VISIBLE);
             } else if (position == 1) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                nextbtn.setVisibility(View.VISIBLE);
             } else if (position == 2) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+               nextbtn.setVisibility(View.VISIBLE);
             } else {
 
                 letsGetStarted.setAnimation(animation);
                 letsGetStarted.setVisibility(View.VISIBLE);
+                nextbtn.setVisibility(View.INVISIBLE);
             }
 
         }
-
-
-
         @Override
         public void onPageScrollStateChanged(int state) {
 

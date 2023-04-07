@@ -35,4 +35,5 @@
     <string name="hotels">Hotels</string>
     <string name="hospitals">Hospitals</string>
     <string name="medicals">Medical Stores</string>
+    <string name="restaurant">Restaurant</string>
 </resources>
