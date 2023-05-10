@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -30,12 +29,10 @@ public class OnBoarding extends AppCompatActivity {
     TextView[] dots;
 
     Button letsGetStarted;
+    Button nextbtn;
 
     Animation animation;
-
     int currentPos;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +44,7 @@ public class OnBoarding extends AppCompatActivity {
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         letsGetStarted = findViewById(R.id.let_get_started);
+        nextbtn=findViewById(R.id.next_btn);
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);
@@ -56,18 +54,12 @@ public class OnBoarding extends AppCompatActivity {
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
     }
-
-
     public void skip(View view){
-        startActivity(new Intent(this, UserDashboard.class));
-        finish();
+startActivity(new Intent(this, UserDashboard.class));
     }
-
     public void next(View view){
-        viewPager.setCurrentItem(currentPos + 1);
+    viewPager.setCurrentItem(currentPos+1);
     }
-
-
     private void addDots(int position){
         dots = new  TextView[4];
         dotsLayout.removeAllViews();
@@ -82,6 +74,7 @@ public class OnBoarding extends AppCompatActivity {
         if (dots.length > 0){
             dots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
         }
+
     }
 
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
@@ -89,27 +82,27 @@ public class OnBoarding extends AppCompatActivity {
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         }
-
         @Override
         public void onPageSelected(int position) {
             addDots(position);
-
-            currentPos = position;
-
+            currentPos=position;
             if (position == 0) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                nextbtn.setVisibility(View.VISIBLE);
             } else if (position == 1) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+                nextbtn.setVisibility(View.VISIBLE);
             } else if (position == 2) {
                 letsGetStarted.setVisibility(View.INVISIBLE);
+               nextbtn.setVisibility(View.VISIBLE);
             } else {
-                animation = AnimationUtils.loadAnimation(OnBoarding.this,R.anim.bottom_anim);
+
                 letsGetStarted.setAnimation(animation);
                 letsGetStarted.setVisibility(View.VISIBLE);
+                nextbtn.setVisibility(View.INVISIBLE);
             }
 
         }
-
         @Override
         public void onPageScrollStateChanged(int state) {
 

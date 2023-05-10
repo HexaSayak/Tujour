@@ -52,7 +52,6 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     //Design
     public static class FeaturedViewHolder extends RecyclerView.ViewHolder{
 
-
         ImageView image;
         TextView title, desc;
 

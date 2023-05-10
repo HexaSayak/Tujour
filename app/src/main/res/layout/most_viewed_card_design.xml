@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:padding="10dp">
-        
+
         <ImageView
             android:id="@+id/mv_image"
             android:layout_width="100dp"
@@ -27,7 +27,7 @@
             android:fontFamily="sans-serif"
             android:text="Kolkata"
             android:textSize="20dp"/>
-        
+
         <RatingBar
             android:id="@+id/mv_rating"
             android:layout_width="wrap_content"

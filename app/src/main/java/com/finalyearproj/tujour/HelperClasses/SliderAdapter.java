@@ -1,11 +1,15 @@
 package com.finalyearproj.tujour.HelperClasses;
 
+import android.app.MediaRouteButton;
 import android.content.Context;
+import android.text.Html;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +21,9 @@ import com.finalyearproj.tujour.R;
 public class SliderAdapter extends PagerAdapter {
     Context context;
     LayoutInflater layoutInflater;
+    Button next_btn;
+    TextView[] dots;
+    LinearLayout dotsLayout;
 
     public SliderAdapter(Context context) {
         this.context = context;
@@ -81,4 +88,6 @@ public class SliderAdapter extends PagerAdapter {
         container.removeView((ConstraintLayout)object);
 
     }
-}
+
+    }
+
