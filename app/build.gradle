@@ -43,6 +43,12 @@ dependencies {
     //implementation 'com.google.firebase:firebase-auth:21.0.3'
     implementation 'com.google.firebase:firebase-auth-ktx:22.0.0'
     implementation 'com.google.firebase:firebase-auth:22.0.0'
+
+    // https://mvnrepository.com/artifact/com.google.firebase/firebase-appcheck-interop
+    implementation 'com.google.firebase:firebase-appcheck-interop:17.0.0'
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.android.gms:play-services-auth:20.5.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     implementation 'com.hbb20:ccp:2.6.0'
