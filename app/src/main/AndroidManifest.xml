@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,10 +15,48 @@
         android:theme="@style/Theme.Tujour"
         tools:targetApi="31">
         <activity
-            android:name=".Login_Page"
+            android:name=".Common.LoginSignup.ForgetPasswordSuccessMessage"
             android:exported="false" />
         <activity
+            android:name=".Common.LoginSignup.SetNewPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignup.MakeSelection"
+            android:exported="false" />
+        <activity
+            android:name=".Common.LoginSignup.ForgetPassword"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Common.LoginSignup.VerifyOTP"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity
+            android:name=".Common.LoginSignup.Signup3rdclass"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Common.LoginSignup.Signup2ndclass"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Common.LoginSignup.Signup"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Common.LoginSignup.Login"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".Common.LoginSignup.RetailerStartUpScreen"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".Common.OnBoarding"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".User.AllCategories"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity

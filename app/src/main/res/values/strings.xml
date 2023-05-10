@@ -34,6 +34,45 @@
     <string name="restaurants">Restaurants</string>
     <string name="hotels">Hotels</string>
     <string name="hospitals">Hospitals</string>
+    <string name="shopping">Shopping</string>
     <string name="medicals">Medical Stores</string>
-    <string name="restaurant">Restaurant</string>
+    <string name="share">Share</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="transport">Transport</string>
+    <string name="home">HOME</string>
+    <string name="search">SEARCH</string>
+    <string name="all_categories">All CATEGORIES</string>
+    <string name="add_missing_place">ADD MISSING PLACE</string>
+    <string name="cab_booking">Cab Book</string>
+    <string name="expand_all">EXPAND ALL</string>
+
+    <!-- profile section -->
+    <string name="login">LOGIN</string>
+    <string name="profile">PROFILE</string>
+    <string name="logout">LOGOUT</string>
+
+
+    <!-- Retailer Panel Strings -->
+    <string name="sign_up">Sign Up</string>
+    <string name="retailer_heading">Support\nOur Business</string>
+    <string name="retailer_tag_line">No matter where you’re going from, we take you there.</string>
+    <string name="create_account">Create\nAccount</string>
+    <string name="how_we_work">How we work ?</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="forget_password_detail">Provide your account\'s email for which you want to reset your password!</string>
+    <string name="make_selection_detail">Select which contact detail should we use to reset your password ?</string>
+    <string name="make_selection">Make Selection</string>
+    <string name="via_sms">via sms:</string>
+    <string name="via_mail">via mail:</string>
+    <string name="new_credentials">New Credentials</string>
+    <string name="new_credentials_detail">Your identify has been verified! Set your new password</string>
+
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Email</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="new_password">New Password</string>
+    <string name="password_updated">Password\nUpdated</string>
+    <string name="password_updated_success_message">Your password has been updated!</string>
 </resources>

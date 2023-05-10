@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Common.LoginSignup.ForgetPassword"
+    android:background="@color/white"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/general_back_icon"
+            android:padding="5dp"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/make_selection"
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:textAllCaps="true"
+            android:fontFamily="@font/muli_black"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/make_selection_detail"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/muli"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/lightWhite"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/mobile_cus_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/mobile_custom_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/mobile_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli"
+                android:text="@string/via_sms"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_toRightOf="@id/mobile_cus_icon"
+                android:layout_marginTop="35dp"/>
+
+            <TextView
+                android:id="@+id/mobile_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli"
+                android:text="+919156412345"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_toRightOf="@id/mobile_cus_icon"
+                android:layout_below="@id/mobile_title"
+                android:layout_marginTop="35dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/lightWhite"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/email_cus_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/email_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/email_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli"
+                android:text="@string/via_mail"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:layout_toRightOf="@id/email_cus_icon"
+                android:layout_marginTop="35dp"/>
+
+            <TextView
+                android:id="@+id/email_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli"
+                android:text="support@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_toRightOf="@id/email_cus_icon"
+                android:layout_below="@id/email_title"
+                android:layout_marginTop="35dp"/>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

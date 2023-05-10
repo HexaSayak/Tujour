@@ -19,6 +19,8 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.Featur
     ArrayList<FeaturedHelperClass> featuredLocations;
 
     public FeaturedAdapter(ArrayList<FeaturedHelperClass> featuredLocations) {
+
+
         this.featuredLocations = featuredLocations;
     }
 
