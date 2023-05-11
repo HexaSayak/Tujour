@@ -3,6 +3,7 @@ package com.mit.tujour.Common.LoginSignup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.mit.tujour.User.UserDashboard;
 
 import java.util.concurrent.TimeUnit;
 
@@ -111,5 +113,9 @@ public class VerifyOTP extends AppCompatActivity {
         if (!code.isEmpty()){
             verifyCode(code);
         }
+
+
+        Intent homeIntent = new Intent(getApplicationContext(), UserDashboard.class);
+        startActivity(homeIntent);
     }
 }
