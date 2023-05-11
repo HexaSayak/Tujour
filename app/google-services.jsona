@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "535318984502",
-    "project_id": "tujour-c14c7",
-    "storage_bucket": "tujour-c14c7.appspot.com"
+    "project_number": "600662117739",
+    "project_id": "tojour-2a6bd",
+    "storage_bucket": "tojour-2a6bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:535318984502:android:4e30c6fdd4d7f812412597",
+        "mobilesdk_app_id": "1:600662117739:android:5ee1c45c58e03e4327102e",
         "android_client_info": {
           "package_name": "com.mit.tujour"
         }
       },
       "oauth_client": [
         {
-          "client_id": "535318984502-aqubq1ag66d0d3jhj8jnhqd97qtppm0p.apps.googleusercontent.com",
+          "client_id": "600662117739-k76kevh08m6v5mooutmb9nd30m1n2via.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mit.tujour",
-            "certificate_hash": "0743d8008bbb895ddda2b7541bc4551a42bb8307"
+            "certificate_hash": "498d87f288a05b8320346e82ebeba7f045c75718"
           }
         },
         {
-          "client_id": "535318984502-9c8m219q32h6vf6rdcndeit8jhscnvkm.apps.googleusercontent.com",
+          "client_id": "600662117739-c868h056hfeoparj48mpo1o2cupf848h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBh4v_xfVGkfMjzspvkRvstcTQmW6MLfT4"
+          "current_key": "AIzaSyCvAnecmfjFCeAIYHvGo4RcxXwvrUO4P6k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "535318984502-9c8m219q32h6vf6rdcndeit8jhscnvkm.apps.googleusercontent.com",
+              "client_id": "600662117739-c868h056hfeoparj48mpo1o2cupf848h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
