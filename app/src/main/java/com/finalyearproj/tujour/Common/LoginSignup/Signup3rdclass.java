@@ -23,13 +23,11 @@ public class Signup3rdclass extends AppCompatActivity {
     TextInputLayout phoneNumber;
     CountryCodePicker countryCodePicker;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_signup3rdclass);
-
 
         //Hooks
         scrollView = findViewById(R.id.signup_3rd_screen_scroll_view);
@@ -42,19 +40,15 @@ public class Signup3rdclass extends AppCompatActivity {
         if (!validatePhoneNumber()) {
             return;
         }
-
         //Get all values passed from previous screens using intent
-
         String _fullName=getIntent().getStringExtra("fullname");
         String _email=getIntent().getStringExtra("email");
         String _username=getIntent().getStringExtra("username");
         String _password=getIntent().getStringExtra("password");
         String _date=getIntent().getStringExtra("date");
         String _gender=getIntent().getStringExtra("gender");
-
-        String _getUserEnteredPhoneNumber = phoneNumber.getEditText().getText().toString().trim();
-        String _phoneNo = countryCodePicker.getSelectedCountryCodeWithPlus() + _getUserEnteredPhoneNumber;
-
+        String _userEnteredPhoneNumber = phoneNumber.getEditText().getText().toString().trim();
+        String _phoneNo = countryCodePicker.getSelectedCountryCodeWithPlus() + _userEnteredPhoneNumber;
 
         Intent next3 = new Intent(getApplicationContext(), VerifyOTP.class);
         //Pass all fields to the next activity
@@ -78,6 +72,7 @@ public class Signup3rdclass extends AppCompatActivity {
         }
 
     }
+
 
     private boolean validatePhoneNumber() {
         String val = phoneNumber.getEditText().getText().toString().trim();

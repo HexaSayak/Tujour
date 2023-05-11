@@ -8,6 +8,7 @@ import androidx.arch.core.executor.TaskExecutor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -60,15 +61,17 @@ public class VerifyOTP extends AppCompatActivity {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
+    public void goToHomeFromOTP(){
+        Log.v("VerifyOTP", "send OTP clicked");
+    }
+
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks =
             new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
                 @Override
                 public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                     super.onCodeSent(s, forceResendingToken);
                     codeBySystem = s;
                 }
-
                 @Override
                 public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                     String code = phoneAuthCredential.getSmsCode();
@@ -77,7 +80,6 @@ public class VerifyOTP extends AppCompatActivity {
                         verifyCode(code);
                     }
                 }
-
                 @Override
                 public void onVerificationFailed(@NonNull FirebaseException e) {
                     Toast.makeText(VerifyOTP.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -85,7 +87,7 @@ public class VerifyOTP extends AppCompatActivity {
             };
 
     private void verifyCode(String code) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem,code);
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
         signInWithPhoneAuthCredential(credential);
     }
 
@@ -98,9 +100,7 @@ public class VerifyOTP extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             Toast.makeText(VerifyOTP.this, "Verification Completed", Toast.LENGTH_SHORT).show();
-
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(VerifyOTP.this, "Verification Not Completed! Try again.", Toast.LENGTH_SHORT).show();

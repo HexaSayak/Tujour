@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "182186994210",
-    "project_id": "tujour-27779",
-    "storage_bucket": "tujour-27779.appspot.com"
+    "project_number": "600662117739",
+    "project_id": "tojour-2a6bd",
+    "storage_bucket": "tojour-2a6bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:182186994210:android:a093ec4be81e69cfc0387b",
+        "mobilesdk_app_id": "1:600662117739:android:5ee1c45c58e03e4327102e",
         "android_client_info": {
           "package_name": "com.finalyearproj.tujour"
         }
       },
       "oauth_client": [
         {
-          "client_id": "182186994210-9c7mu3lpj4benuhtrdou8d4oe0ms5lb5.apps.googleusercontent.com",
+          "client_id": "600662117739-k76kevh08m6v5mooutmb9nd30m1n2via.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.finalyearproj.tujour",
+            "certificate_hash": "498d87f288a05b8320346e82ebeba7f045c75718"
+          }
+        },
+        {
+          "client_id": "600662117739-c868h056hfeoparj48mpo1o2cupf848h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB-G_VZvGkhaIYGF21mEQPF5UtRYeiyj54"
+          "current_key": "AIzaSyCvAnecmfjFCeAIYHvGo4RcxXwvrUO4P6k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "182186994210-9c7mu3lpj4benuhtrdou8d4oe0ms5lb5.apps.googleusercontent.com",
+              "client_id": "600662117739-c868h056hfeoparj48mpo1o2cupf848h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

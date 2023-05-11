@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="48dp"
@@ -20,7 +20,16 @@
             android:onClick="goToHomeFromOTP"
             android:padding="5dp"
             android:src="@drawable/general_close"
+            app:tint="@color/black"/>-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:padding="5dp"
+            android:src="@drawable/general_close"
             app:tint="@color/black"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
