@@ -11,10 +11,12 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 public class Signup extends AppCompatActivity {
@@ -22,7 +24,7 @@ public class Signup extends AppCompatActivity {
     ImageView backBtn;
     Button next, login;
     TextView titleText, slideText;
-    TextInputLayout fullname,username,email,password;
+    TextInputLayout fullName,username,email,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +38,12 @@ public class Signup extends AppCompatActivity {
         titleText = findViewById(R.id.signup_title_text);
         slideText = findViewById(R.id.signup_slide_text);
 
+
         //Hooks for getting data
-        fullname=findViewById(R.id.signup_fullname);
+        fullName=findViewById(R.id.signup_fullname);
         username=findViewById(R.id.signup_username);
         email=findViewById(R.id.signup_email);
         password=findViewById(R.id.signup_password);
-
-
     }
 
 
@@ -50,8 +51,23 @@ public class Signup extends AppCompatActivity {
         if (!validateFullName() | !validateUsername() | !validateEmail() | !validatePassword()) {
             return;
         }
+        //##################
+        String fullNameM = fullName.getEditText().getText().toString();
+        String usernameM = username.getEditText().getText().toString();
+        String emailM = email.getEditText().getText().toString();
+        String passwordM = password.getEditText().getText().toString();
 
         Intent intent = new Intent(getApplicationContext(),Signup2ndclass.class);
+
+        Log.d("Signup", "fullName = " + fullNameM);
+        Log.d("Signup", "username = " + usernameM);
+        Log.d("Signup", "email = " + emailM);
+        Log.d("Signup", "password = " + passwordM);
+        //Moving data to Signup2nd_class
+        intent.putExtra("fullName", fullNameM);
+        intent.putExtra("username", usernameM);
+        intent.putExtra("email", emailM);
+        intent.putExtra("password", passwordM);
 
 
         //Add Shared Animation
@@ -78,13 +94,13 @@ public class Signup extends AppCompatActivity {
     }
     //validation for name
     private boolean validateFullName() {
-        String val = fullname.getEditText().getText().toString().trim();
+        String val = fullName.getEditText().getText().toString().trim();
         if (val.isEmpty()) {
-            fullname.setError("Field can not be empty");
+            fullName.setError("Field can not be empty");
             return false;
         } else {
-            fullname.setError(null);
-            fullname.setErrorEnabled(false);
+            fullName.setError(null);
+            fullName.setErrorEnabled(false);
             return true;
         }
     }
@@ -100,7 +116,7 @@ public class Signup extends AppCompatActivity {
         } else if (val.length() > 20) {
             username.setError("Username is too large!");
             return false;
-       /* } else if (!val.matches(checkspaces)) {
+        /*} else if (!val.matches(checkspaces)) {
             username.setError("No White spaces are allowed!");
             return false;*/
         } else {
@@ -139,14 +155,14 @@ public class Signup extends AppCompatActivity {
                 //"(?=.*[a-z])" +         //at least 1 lower case letter
                 //"(?=.*[A-Z])" +         //at least 1 upper case letter
                 "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                //"(?=.*[@#$%^&+=])" +    //at least 1 special character
                 "(?=S+$)" +           //no white spaces
                 ".{4,}" +               //at least 4 characters
                 "$";
         if (val.isEmpty()) {
             password.setError("Field can not be empty");
             return false;
-       /* } else if (!val.matches(checkPassword)) {
+        /*} else if (!val.matches(checkPassword)) {
             password.setError("Password should contain 4 characters!");
             return false;*/
         } else {
@@ -155,6 +171,5 @@ public class Signup extends AppCompatActivity {
             return true;
         }
     }
-
 }
 

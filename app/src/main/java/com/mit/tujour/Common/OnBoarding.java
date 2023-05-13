@@ -13,9 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-
-import com.mit.tujour.R;
 import com.mit.tujour.HelperClasses.SliderAdapter;
+import com.mit.tujour.R;
 import com.mit.tujour.User.UserDashboard;
 
 public class OnBoarding extends AppCompatActivity {

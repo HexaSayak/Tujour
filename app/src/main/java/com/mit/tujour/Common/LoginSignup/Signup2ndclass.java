@@ -2,9 +2,11 @@ package com.mit.tujour.Common.LoginSignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,11 +18,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.mit.tujour.R;
 
 import java.util.Calendar;
 
 public class Signup2ndclass extends AppCompatActivity {
+
+    TextInputLayout fullName,username,email,password;
     //Variables
     ImageView backBtn;
     Button next, login;
@@ -28,6 +33,7 @@ public class Signup2ndclass extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton selectedGender;
     DatePicker datePicker;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,11 @@ public class Signup2ndclass extends AppCompatActivity {
         radioGroup = findViewById(R.id.radio_group);
         datePicker = findViewById(R.id.age_picker);
 
+        //############################
+        fullName = findViewById(R.id.signup_fullname);
+        username=findViewById(R.id.signup_username);
+        email=findViewById(R.id.signup_email);
+        password=findViewById(R.id.signup_password);
 
     }
 
@@ -52,13 +63,35 @@ public class Signup2ndclass extends AppCompatActivity {
         if (!validateGender()| !validateAge()){
             return;
         }
+
+        String fullName = getIntent().getStringExtra("fullName");
+        String email = getIntent().getStringExtra("email");
+        String username = getIntent().getStringExtra("username");
+        String password = getIntent().getStringExtra("password");
+
+        Log.d("Signup2", "fullName = " + fullName);
+        Log.d("Signup2", "username = " + username);
+        Log.d("Signup2", "email = " + email);
+        Log.d("Signup2", "password = " + password);
+
         selectedGender=findViewById(radioGroup.getCheckedRadioButtonId());
-        String _gender=selectedGender.getText().toString();
+        String gender=selectedGender.getText().toString();
         int day=datePicker.getDayOfMonth();
         int month=datePicker.getMonth();
         int year=datePicker.getYear();
-        String _date =day+"."+month+"."+year;
+        String dob =year+"-"+month+"-"+day;
+        Log.d("Signup2", "dob = " + dob);
         Intent intent = new Intent(getApplicationContext(), Signup3rdclass.class);
+
+
+
+        intent.putExtra("fullName", fullName);
+        intent.putExtra("username", username);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        intent.putExtra("dob", dob);
+        intent.putExtra("gender", gender);
+
 
 
         //Add Transition and call next activity
@@ -76,8 +109,6 @@ public class Signup2ndclass extends AppCompatActivity {
         } else {
             startActivity(intent);
         }
-
-
     }
     //validate gender
     private boolean validateGender() {
