@@ -143,11 +143,11 @@ public class VerifyOTP extends AppCompatActivity {
 
     private void storeNewUsersData() {
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com");
+        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
         //now pointing/ Referencing to that Firebase Database Table
         DatabaseReference reference = rootNode.getReference();
-        //DatabaseReference reference = rootNode.getInstance().getReference("Users");
         Map<String, TujourUser> userCollection = new HashMap<>();
+        //Map<UUID, TujourUser> userCollection = new HashMap<>();
         TujourUser user = new TujourUser();
         user.setUuid(UUID.randomUUID().toString());
         user.setFullName(fullName);
@@ -158,13 +158,17 @@ public class VerifyOTP extends AppCompatActivity {
         user.setGender(gender);
         Log.d("VerifyOTP", "storing user record to db" + user.toString());
         userCollection.put(TUJOUR_USER_DB, user);
-        reference.child(phoneNo).setValue(userCollection);
+        //userCollection.put(UUID.randomUUID(), user);
+        //reference.child(user.getUuid()).setValue(userCollection);
+        reference.child(phoneNo).setValue(userCollection);*/
 
-        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference("Users");
 
-        TujourUserHelperClass addNewUser = new TujourUserHelperClass(fullName, username, email, phoneNo, password, date, gender);
-        reference.setValue(addNewUser);*/
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
+        DatabaseReference reference = rootNode.getReference("Users"); // Firebase now changing null to Users via editing
+
+        TujourUser addNewUser = new TujourUser(fullName, username, email, phoneNo, password, date, gender);
+        //TujourUserHelperClass addNewUser = new TujourUserHelperClass(fullName, username, email, phoneNo, password, date, gender);
+        reference.child(phoneNo).setValue(addNewUser);
     }
 
     //Jump back to UserDashboard after OTP verification!

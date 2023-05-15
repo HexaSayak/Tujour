@@ -5,6 +5,7 @@ import android.view.View;
 import java.util.Objects;
 
 public class TujourUser {
+    private final String email; // <-- New added
     private String uuid;
     private String fullName;
     private String emailId;
@@ -18,6 +19,16 @@ public class TujourUser {
 
     private String gender;
 
+    public TujourUser(String fullName, String username, String email, String phoneNo, String password, String date, String gender) {
+        this.fullName = fullName;
+        this.username = username;
+        this.email = email;
+        this.phoneNo = Long.valueOf(phoneNo);
+        this.password = password;
+        this.date = date;
+        this.gender = gender;
+    }
+    // <-- New added
 
     public String getUuid() {
         return uuid;
