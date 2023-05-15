@@ -91,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
+                    android:textColor="@color/black"
                     tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -100,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Female"
+                    android:textColor="@color/black"
                     tools:ignore="TouchTargetSizeCheck" />
 
 
@@ -109,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Other"
+                    android:textColor="@color/black"
                     tools:ignore="TouchTargetSizeCheck" />
             </RadioGroup>
 
@@ -135,6 +138,8 @@
                 android:layout_height="wrap_content"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
+                android:calendarTextColor="@color/black"
+                android:yearListSelectorColor="@color/black"
                 android:spinnersShown="true" />
 
 

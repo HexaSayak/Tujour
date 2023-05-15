@@ -1,6 +1,7 @@
 package com.mit.tujour.Common.LoginSignup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,7 +13,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,7 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 import com.mit.tujour.R;
 import com.mit.tujour.User.UserDashboard;
+import com.mit.tujour.model.TujourUser;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Login extends AppCompatActivity {
@@ -67,13 +74,24 @@ public class Login extends AppCompatActivity {
         }
 
         //final String _completePhoneNumber = "+"+countryCodePicker.getFullNumber()+_phoneNumber;
-        final String _completePhoneNumber = countryCodePicker.getSelectedCountryCodeWithPlus() + _phoneNumber;
+        String _completePhoneNumber = countryCodePicker.getSelectedCountryCodeWithPlus() + _phoneNumber;
 
         Log.d("completePhoneNumber", "complete phone number store" + _completePhoneNumber);
         //Database
         /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
         DatabaseReference reference = rootNode.getReference("Users");*/
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users");
+
+        //TODO use username instead of phoneNo
+        String username = "sanjeevg";
+        TujourUser user;
+        reference.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                 Map valueMap = (HashMap) task.getResult().getValue();
+                 Log.d("Login", (String) valueMap.get("emailId")+" signed in successfully");
+            }
+        });
 
         //Query checkUserDatabase = reference.orderByChild("phoneNo").equalTo(_completePhoneNumber);
         Query checkUserDatabase = reference.child("Users").orderByChild("phoneNo").equalTo(_completePhoneNumber);

@@ -29,6 +29,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.mit.tujour.User.UserDashboard;
 import com.mit.tujour.model.TujourUser;
 
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -36,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VerifyOTP extends AppCompatActivity {
 
-    private String TUJOUR_USER_DB = "user";
+    private String TUJOUR_USER_DB = "users";
     private String TUJOUR_HOTEL_DB = "hotel";
     private String TUJOUR_BUS_DB = "bus";
 
@@ -75,7 +76,7 @@ public class VerifyOTP extends AppCompatActivity {
         gender = getIntent().getStringExtra("gender");
         phoneNo = getIntent().getStringExtra("phoneNo");
         whatToDO = getIntent().getStringExtra("whatToDO");
-        otpDescriptionText.setText("Enter One Time Password Sent Onn"+phoneNo);
+        otpDescriptionText.setText("Enter One Time Password Sent to "+phoneNo);
         sendVerificationCodeToUser(phoneNo);
     }
 
@@ -112,6 +113,7 @@ public class VerifyOTP extends AppCompatActivity {
                 }
                 @Override
                 public void onVerificationFailed(@NonNull FirebaseException e) {
+                    Log.e("Send OTP", e.getMessage(), e);
                     Toast.makeText(VerifyOTP.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             };
@@ -143,32 +145,32 @@ public class VerifyOTP extends AppCompatActivity {
 
     private void storeNewUsersData() {
 
-        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-d6dd0-default-rtdb.asia-southeast1.firebasedatabase.app/");
         //now pointing/ Referencing to that Firebase Database Table
-        DatabaseReference reference = rootNode.getReference();
+        DatabaseReference reference = rootNode.getReference().child(TUJOUR_USER_DB);
         Map<String, TujourUser> userCollection = new HashMap<>();
-        //Map<UUID, TujourUser> userCollection = new HashMap<>();
         TujourUser user = new TujourUser();
-        user.setUuid(UUID.randomUUID().toString());
+       // user.setUuid(UUID.randomUUID().toString());
         user.setFullName(fullName);
         user.setEmailId(email);
         user.setPhoneNo(Long.valueOf(phoneNo));
         user.setUsername(username);
         user.setDate(date);
         user.setGender(gender);
+        user.setPassword(password);
         Log.d("VerifyOTP", "storing user record to db" + user.toString());
-        userCollection.put(TUJOUR_USER_DB, user);
+        //userCollection.put(username, user);
         //userCollection.put(UUID.randomUUID(), user);
         //reference.child(user.getUuid()).setValue(userCollection);
-        reference.child(phoneNo).setValue(userCollection);*/
+        reference.child(username).setValue(user);
 
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
+        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-d6dd0-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference reference = rootNode.getReference("Users"); // Firebase now changing null to Users via editing
 
         TujourUser addNewUser = new TujourUser(fullName, username, email, phoneNo, password, date, gender);
         //TujourUserHelperClass addNewUser = new TujourUserHelperClass(fullName, username, email, phoneNo, password, date, gender);
-        reference.child(phoneNo).setValue(addNewUser);
+        reference.child(phoneNo).setValue(addNewUser);*/
     }
 
     //Jump back to UserDashboard after OTP verification!

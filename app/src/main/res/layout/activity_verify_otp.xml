@@ -81,7 +81,7 @@
             app:itemHeight="50dp"
             app:itemRadius="5dp"
             app:itemWidth="50dp"
-            app:lineColor="@color/colorAccent"
+            app:lineColor="@color/black"
             app:lineWidth="1dp" />
 
         <Button
