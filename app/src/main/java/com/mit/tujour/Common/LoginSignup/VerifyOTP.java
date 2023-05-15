@@ -145,7 +145,7 @@ public class VerifyOTP extends AppCompatActivity {
 
     private void storeNewUsersData() {
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-d6dd0-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
         //now pointing/ Referencing to that Firebase Database Table
         DatabaseReference reference = rootNode.getReference().child(TUJOUR_USER_DB);
         Map<String, TujourUser> userCollection = new HashMap<>();

@@ -130,25 +130,15 @@
             android:layout_marginTop="80dp">
 
 
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/login_country_code_picker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_border"
-                android:padding="7dp"
-                app:ccp_autoDetectCountry="true"
-                app:ccp_showFlag="true"
-                app:ccp_showFullName="true"
-                app:ccp_showNameCode="true" />
+
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_phone_number"
+                android:id="@+id/login_username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_country_code_picker"
-                android:hint="@string/enter_phone_number"
+                android:hint="@string/enter_username"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidthFocused="2dp"
@@ -160,11 +150,11 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_phone_number_editText"
+                    android:id="@+id/login_username_editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/muli_semibold"
-                    android:inputType="phone"
+                    android:inputType="text"
                     android:textColor="@color/black"
                     android:textCursorDrawable="@null" />
 
@@ -177,7 +167,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_phone_number"
+                android:layout_below="@id/login_username"
                 android:hint="@string/enter_password"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
