@@ -163,6 +163,7 @@ public class VerifyOTP extends AppCompatActivity {
         //userCollection.put(UUID.randomUUID(), user);
         //reference.child(user.getUuid()).setValue(userCollection);
         reference.child(username).setValue(user);
+        //reference.child(fullName).setValue(user);
 
 
         /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-d6dd0-default-rtdb.asia-southeast1.firebasedatabase.app/");

@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.mit.tujour.Common.LoginSignup.RetailerStartUpScreen;
 import com.mit.tujour.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.CategoriesHelperclass;
@@ -36,6 +38,8 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
     RecyclerView categoriesRecyler;
     RecyclerView mostviewedRecycler;
     RecyclerView.Adapter adapter;
+
+    private FirebaseAuth auth;
     GradientDrawable gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8;
 
     ImageView menuIcon;
@@ -62,6 +66,9 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         mostviewedRecycler = findViewById(R.id.mostviewed_recycle);
         menuIcon = findViewById(R.id.menu_icon); // <-- After clicking here Navigation Drawer will open
         contentView = findViewById(R.id.content);
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseMessaging.getInstance().subscribeToTopic("notification");
 
         //RecyclerView func calls
 

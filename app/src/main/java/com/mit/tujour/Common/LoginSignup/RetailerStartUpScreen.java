@@ -27,7 +27,7 @@ Button signup;
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(RetailerStartUpScreen.this,Signup.class);
+                Intent intent=new Intent(RetailerStartUpScreen.this, Signup.class);
                 startActivity(intent);
             }
         });

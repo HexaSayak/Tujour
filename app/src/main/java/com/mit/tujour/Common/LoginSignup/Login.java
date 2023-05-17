@@ -1,14 +1,24 @@
 package com.mit.tujour.Common.LoginSignup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,9 +45,11 @@ public class Login extends AppCompatActivity {
     TextInputLayout phoneNumber, password, userName;
     RelativeLayout progressbar;
 
+    TextView openForgetPass;
     Button loginButton;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +63,16 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.login_password);
         progressbar = findViewById(R.id.login_progress_bar);
         loginButton = findViewById(R.id.letTheUserLogIn);
-
-
+        openForgetPass = findViewById(R.id.openForgetPass);
     }
 
     //login the user in app!
     public void letTheUserLoggedIn(View view) {
+
+        if(!isConnected(this)){
+            showCustomDialogue();
+        }
+
         if (!validateUser() | !validatePassword()) {
             return;
         }
@@ -76,8 +92,8 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                  Map valueMap = (HashMap) task.getResult().getValue();
                  Log.d("Login", (String) valueMap.get("emailId")+" signed in successfully");
-                 progressbar.setVisibility(View.GONE);
-                 if (task.isSuccessful()){
+
+                 /*if (task.isSuccessful()){
                      String _password = (String) valueMap.get("password");
                      if (pass.equals(_password)) {
                          password.setError(null);
@@ -91,14 +107,97 @@ public class Login extends AppCompatActivity {
                          Toast.makeText(Login.this, _fullname+"\n"+_email+"\n"+_phoneNo+"\n"+_dob, Toast.LENGTH_SHORT).show();
                      }
                      else {
+                         progressbar.setVisibility(View.GONE);
                          Toast.makeText(Login.this, "Password does not match!", Toast.LENGTH_SHORT).show();
                      }
-                 }
+                 } else {
+                     progressbar.setVisibility(View.GONE);
+                     Toast.makeText(Login.this, "User doesnot exist!", Toast.LENGTH_SHORT).show();
+                 }*/
+
+                try {
+                    if (task.isSuccessful()){
+                        String _usename = (String) valueMap.get("username");
+                        if (username.equals(_usename)){
+                            String _password = (String) valueMap.get("password");
+                            userName.setError(null);
+                            userName.setErrorEnabled(false);
+
+                            if (pass.equals(_password)) {
+                                password.setError(null);
+                                password.setErrorEnabled(false);
+
+                                String _fullname = (String) valueMap.get("fullName");
+                                String _email = (String) valueMap.get("emailId");
+                                Long _phoneNo = (Long) valueMap.get("phoneNo");
+                                String _dob = (String) valueMap.get("date");
+                                progressbar.setVisibility(View.GONE);
+                                Toast.makeText(Login.this, _fullname+"\n"+_email+"\n"+_phoneNo+"\n"+_dob, Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                progressbar.setVisibility(View.GONE);
+                                Toast.makeText(Login.this, "Password does not match!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            progressbar.setVisibility(View.GONE);
+                            Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        progressbar.setVisibility(View.GONE);
+                        Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e){
+                    Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    progressbar.setVisibility(View.GONE);
+                    Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
 
+
+    //Check Internet Connection
+    private boolean isConnected(Login login) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) login.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if (wifiConn != null && wifiConn.isConnected() || (mobileConn != null && mobileConn.isConnected())){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showCustomDialogue() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+        builder.setMessage("Please connect to the internet to proceed further")
+                .setCancelable(false)
+                .setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(), RetailerStartUpScreen.class));
+                        finish();
+                    }
+                });
+        builder.show();
+
+
+    }
+
+    public void callForgetPassword(View view) {
+        startActivity(new Intent(getApplicationContext(), ForgetPassword.class));
+
+    }
     private boolean validateUser() {
         String val = userName.getEditText().getText().toString().trim();
         String checkspaces = "Aw{1,20}z";
