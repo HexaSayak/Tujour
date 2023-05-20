@@ -1,7 +1,5 @@
 package com.mit.tujour.model;
 
-import android.view.View;
-
 import java.util.Objects;
 
 public class TujourUser {
@@ -15,18 +13,18 @@ public class TujourUser {
 
     private String password;
 
-    private String date;
+    private String dob;
 
     private String gender;
 
     public TujourUser(){ }
-    public TujourUser(String fullName, String username, String email, String phoneNo, String password, String date, String gender) {
+    public TujourUser(String fullName, String username, String email, String phoneNo, String password, String dob, String gender) {
         this.fullName = fullName;
         this.username = username;
         this.email = email;
         this.phoneNo = Long.valueOf(phoneNo);
         this.password = password;
-        this.date = date;
+        this.dob = dob;
         this.gender = gender;
     }
     // <-- New added
@@ -79,12 +77,12 @@ public class TujourUser {
         this.username = username;
     }
 
-    public String getDate() {
-        return date;
+    public String getDob() {
+        return dob;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getGender() {
@@ -105,13 +103,13 @@ public class TujourUser {
                 && getEmailId().equals(that.getEmailId())
                 && getPhoneNo().equals(that.getPhoneNo())
                 && getUsername().equals(that.getUsername())
-                && getDate().equals(that.getDate())
+                && getDob().equals(that.getDob())
                 && getGender().equals(that.getGender());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUuid(), getFullName(), getEmailId(), getPhoneNo(), getUsername(), getDate(), getGender());
+        return Objects.hash(getUuid(), getFullName(), getEmailId(), getPhoneNo(), getUsername(), getDob(), getGender());
     }
 
     @Override
@@ -123,7 +121,7 @@ public class TujourUser {
                 ", phoneNo=" + phoneNo +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", date='" + date + '\'' +
+                ", date='" + dob + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
     }

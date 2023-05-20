@@ -75,4 +75,19 @@
     <string name="new_password">New Password</string>
     <string name="password_updated">Password\nUpdated</string>
     <string name="password_updated_success_message">Your password has been updated!</string>
+
+    <string name="indonesia_package">Lombok Island is a majestic island that has a plethora of places to explore. It is located east of Bali and west of Sumbawa, part of the Lesser Sunda Island chain. This place is blessed with scenic beaches and it’s a much needed escape that tourists need. Bali’s next door neighbour, it is home to Indonesia’s second largest volcanic peaks, Mount Rinjani. This island offers many extraordinary experiences to explore the magical underwater world of Indonesia.</string>
+
+    <string name="temp_card">---</string>
+    <string name="wind_card">---</string>
+    <string name="locality_card">---</string>
+    <string name="date_card">Last updated at: 10:56 AM</string>
+    <string name="sunrise_sund_details">05:30 AM</string>
+    <string name="sun_set_sun_details">06:20 PM</string>
+    <string name="splash_title">Tujour Weather</string>
+    <string name="today_forecast">Today Forecast</string>
+    <string name="today_date">22-08-22</string>
+    <string name="weather_type">Light Rain</string>
+    <string name="twomorrow_forecast">Tomorrow Forecast</string>
+    <string name="temp_c">26°C</string>
 </resources>

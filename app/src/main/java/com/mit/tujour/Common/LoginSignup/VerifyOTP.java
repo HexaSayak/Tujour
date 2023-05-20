@@ -1,8 +1,5 @@
 package com.mit.tujour.Common.LoginSignup;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +9,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.chaos.view.PinView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.mit.tujour.Database.TujourUserHelperClass;
-import com.mit.tujour.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -26,18 +22,15 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.mit.tujour.HelperClasses.DBService;
+import com.mit.tujour.R;
 import com.mit.tujour.User.UserDashboard;
 import com.mit.tujour.model.TujourUser;
 
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTP extends AppCompatActivity {
 
-    private String TUJOUR_USER_DB = "users";
     private String TUJOUR_HOTEL_DB = "hotel";
     private String TUJOUR_BUS_DB = "bus";
 
@@ -145,33 +138,24 @@ public class VerifyOTP extends AppCompatActivity {
 
     private void storeNewUsersData() {
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-c14c7-default-rtdb.firebaseio.com/");
+       /* FirebaseDatabase rootNode = FirebaseDatabase.getInstance(DBService.FIREBASE_RTDB_URL);
         //now pointing/ Referencing to that Firebase Database Table
-        DatabaseReference reference = rootNode.getReference().child(TUJOUR_USER_DB);
-        Map<String, TujourUser> userCollection = new HashMap<>();
+        DatabaseReference reference = rootNode.getReference().child(DBService.TUJOUR_USER_DB);
+        Map<String, TujourUser> userCollection = new HashMap<>();*/
         TujourUser user = new TujourUser();
        // user.setUuid(UUID.randomUUID().toString());
         user.setFullName(fullName);
         user.setEmailId(email);
         user.setPhoneNo(Long.valueOf(phoneNo));
         user.setUsername(username);
-        user.setDate(date);
+        user.setDob(date);
         user.setGender(gender);
         user.setPassword(password);
         Log.d("VerifyOTP", "storing user record to db" + user.toString());
-        //userCollection.put(username, user);
-        //userCollection.put(UUID.randomUUID(), user);
-        //reference.child(user.getUuid()).setValue(userCollection);
-        reference.child(username).setValue(user);
-        //reference.child(fullName).setValue(user);
 
+        DBService dbService = new DBService();
+        dbService.saveUser(user);
 
-        /*FirebaseDatabase rootNode = FirebaseDatabase.getInstance("https://tujour-d6dd0-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        DatabaseReference reference = rootNode.getReference("Users"); // Firebase now changing null to Users via editing
-
-        TujourUser addNewUser = new TujourUser(fullName, username, email, phoneNo, password, date, gender);
-        //TujourUserHelperClass addNewUser = new TujourUserHelperClass(fullName, username, email, phoneNo, password, date, gender);
-        reference.child(phoneNo).setValue(addNewUser);*/
     }
 
     //Jump back to UserDashboard after OTP verification!

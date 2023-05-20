@@ -1,12 +1,12 @@
 package com.mit.tujour.model;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mit.tujour.R;
 
-public class IndonesiaPackage extends AppCompatActivity {
+public class Indonesia_package extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

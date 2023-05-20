@@ -1,12 +1,5 @@
 package com.mit.tujour.User;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -17,6 +10,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.mit.tujour.Common.LoginSignup.RetailerStartUpScreen;
@@ -26,8 +27,9 @@ import com.mit.tujour.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.FeaturedHelperClass;
 import com.mit.tujour.HelperClasses.HomeAdapter.MostViewAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.MostViewedHelperClass;
+import com.mit.tujour.MainActivityWeather;
 import com.mit.tujour.R;
-import com.google.android.material.navigation.NavigationView;
+import com.mit.tujour.model.Indonesia_package;
 
 import java.util.ArrayList;
 
@@ -100,6 +102,11 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
 
         navigationDrawer();
+    }
+
+    public void clickOnWeather(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivityWeather.class);
+        startActivity(intent);
     }
 
     //Navigation Drawer Functions
@@ -218,7 +225,6 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredLocations.add(new FeaturedHelperClass(R.drawable.thailand_img, "Thailand", "They say do what you love’ so I travelled to Thailand."));
         featuredLocations.add(new FeaturedHelperClass(R.drawable.japan_img, "Japan", "Happiness is going on a sushi date in Japan."));
         featuredLocations.add(new FeaturedHelperClass(R.drawable.hongkong_img, "Hong kong", "Hong Kong is really all that and dim sum."));
-
         adapter = new FeaturedAdapter(featuredLocations);
         featuredRecycler.setAdapter(adapter);
 
@@ -227,6 +233,10 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     }
 
+    public void clickOnFeaturedLoc(View view){
+        Intent intent = new Intent(getApplicationContext(), Indonesia_package.class);
+        startActivity(intent);
+    }
 
     public void callRetailerScreens(View view){
         startActivity(new Intent(getApplicationContext(), RetailerStartUpScreen.class));

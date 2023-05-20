@@ -1,15 +1,10 @@
 package com.mit.tujour.Common.LoginSignup;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -21,28 +16,27 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.hbb20.CountryCodePicker;
 import com.mit.tujour.R;
+import com.mit.tujour.User.UserDashboard;
 import com.mit.tujour.model.TujourUser;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
     //Variables
-    CountryCodePicker countryCodePicker;
-    TextInputLayout phoneNumber, password, userName;
+    TextInputLayout password, userName;
     RelativeLayout progressbar;
 
     TextView openForgetPass;
@@ -72,6 +66,7 @@ public class Login extends AppCompatActivity {
         if(!isConnected(this)){
             showCustomDialogue();
         }
+        Intent intent = new Intent(getApplicationContext(), UserDashboard.class);
 
         if (!validateUser() | !validatePassword()) {
             return;
@@ -87,72 +82,59 @@ public class Login extends AppCompatActivity {
         String username = userName.getEditText().getText().toString();
         String pass = password.getEditText().getText().toString().trim();
         TujourUser user;
-        reference.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                 Map valueMap = (HashMap) task.getResult().getValue();
-                 Log.d("Login", (String) valueMap.get("emailId")+" signed in successfully");
 
-                 /*if (task.isSuccessful()){
-                     String _password = (String) valueMap.get("password");
-                     if (pass.equals(_password)) {
-                         password.setError(null);
-                         password.setErrorEnabled(false);
+        try {
+            reference.child(username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    Map valueMap = (HashMap) task.getResult().getValue();
+                    //Log.d("Login", (String) valueMap.get("emailId")+" signed in successfully");
 
-                         String _fullname = (String) valueMap.get("fullName");
-                         String _email = (String) valueMap.get("emailId");
-                         Long _phoneNo = (Long) valueMap.get("phoneNo");
-                         String _dob = (String) valueMap.get("date");
-                         progressbar.setVisibility(View.GONE);
-                         Toast.makeText(Login.this, _fullname+"\n"+_email+"\n"+_phoneNo+"\n"+_dob, Toast.LENGTH_SHORT).show();
-                     }
-                     else {
-                         progressbar.setVisibility(View.GONE);
-                         Toast.makeText(Login.this, "Password does not match!", Toast.LENGTH_SHORT).show();
-                     }
-                 } else {
-                     progressbar.setVisibility(View.GONE);
-                     Toast.makeText(Login.this, "User doesnot exist!", Toast.LENGTH_SHORT).show();
-                 }*/
+                    try {
+                        if (task.isSuccessful()){
+                            String _usename = (String) valueMap.get("username");
+                            if (username.equals(_usename)){
+                                String _password = (String) valueMap.get("password");
+                                userName.setError(null);
+                                userName.setErrorEnabled(false);
 
-                try {
-                    if (task.isSuccessful()){
-                        String _usename = (String) valueMap.get("username");
-                        if (username.equals(_usename)){
-                            String _password = (String) valueMap.get("password");
-                            userName.setError(null);
-                            userName.setErrorEnabled(false);
+                                if (pass.equals(_password)) {
+                                    password.setError(null);
+                                    password.setErrorEnabled(false);
 
-                            if (pass.equals(_password)) {
-                                password.setError(null);
-                                password.setErrorEnabled(false);
+                                    String _fullname = (String) valueMap.get("fullName");
+                                    String _email = (String) valueMap.get("emailId");
+                                    Long _phoneNo = (Long) valueMap.get("phoneNo");
+                                    String _dob = (String) valueMap.get("dob");
+                                    progressbar.setVisibility(View.GONE);
+                                    //Toast.makeText(Login.this, _fullname+"\n"+_email+"\n"+_phoneNo+"\n"+_dob, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Log in Successful!", Toast.LENGTH_SHORT).show();
 
-                                String _fullname = (String) valueMap.get("fullName");
-                                String _email = (String) valueMap.get("emailId");
-                                Long _phoneNo = (Long) valueMap.get("phoneNo");
-                                String _dob = (String) valueMap.get("date");
+                                    startActivity(intent);
+
+                                }
+                                else {
+                                    progressbar.setVisibility(View.GONE);
+                                    Toast.makeText(Login.this, "Password does not match!", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
                                 progressbar.setVisibility(View.GONE);
-                                Toast.makeText(Login.this, _fullname+"\n"+_email+"\n"+_phoneNo+"\n"+_dob, Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                progressbar.setVisibility(View.GONE);
-                                Toast.makeText(Login.this, "Password does not match!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             progressbar.setVisibility(View.GONE);
                             Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
                         }
-                    } else {
+                    } catch (Exception e){
                         progressbar.setVisibility(View.GONE);
                         Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
                     }
-                } catch (Exception e){
-                    Toast.makeText(Login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    progressbar.setVisibility(View.GONE);
-                    Toast.makeText(Login.this, "No such user exist!", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+            });
+        } catch (Exception e){
+            Log.e("Login", e.getMessage());
+            progressbar.setVisibility(View.GONE);
+        }
 
     }
 

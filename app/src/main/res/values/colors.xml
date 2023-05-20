@@ -27,5 +27,8 @@
     <color name="card2">#7adccf</color>
     <color name="card3">#f7c59f</color>
     <color name="card4">#b8d7f5</color>
-
+    <color name="shade_blue">#0060B9</color>
+    <color name="blue">#0117A8</color>
+    <color name="fade_blue">#115695</color>
+    <color name="red_fed">#001E4B</color>
 </resources>

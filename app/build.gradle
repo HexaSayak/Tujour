@@ -61,4 +61,22 @@ dependencies {
 
     implementation "com.airbnb.android:lottie:6.0.0"
 
+
+    //Custom dependency
+    //custom size
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //Fast android networking
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //Facebook Shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    // Admob ads
+    //implementation 'com.google.android.gms:play-services-ads:22.1.0'
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+
 }

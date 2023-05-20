@@ -97,7 +97,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="15dp"
-                            android:src="@drawable/search_icon" />
+                            android:src="@drawable/search_icon_weather" />
 
                     </RelativeLayout>
 
@@ -112,7 +112,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="clickOnWeather">
 
                         <RelativeLayout
                             android:layout_width="60dp"
@@ -228,7 +229,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/banner_background_light">
+                    android:background="@color/banner_background_light"
+                    android:onClick="clickOnFeaturedLoc">
 
                     <LinearLayout
                         android:id="@+id/featured_background"
