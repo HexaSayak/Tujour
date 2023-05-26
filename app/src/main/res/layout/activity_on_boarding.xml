@@ -45,6 +45,7 @@
             android:id="@+id/let_get_started"
             android:background="@color/colorPrimary"
             android:text="@string/let_get_started"
+            android:onClick="clickToOpenUserdashboard"
             android:visibility="invisible" />
 
         <LinearLayout

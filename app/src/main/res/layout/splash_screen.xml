@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/akaya_telivigala"
-        android:text="TUJOUR!"
+        android:text="TUJOUR"
         android:id="@+id/txtTujour"
         android:textColor="@color/black"
         android:visibility="gone"

@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,11 +21,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.mit.tujour.Common.LoginSignup.Login;
 import com.mit.tujour.Common.LoginSignup.RetailerStartUpScreen;
+import com.mit.tujour.Common.LoginSignup.Signup;
 import com.mit.tujour.HelperClasses.HomeAdapter.CategoriesAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.CategoriesHelperclass;
 import com.mit.tujour.HelperClasses.HomeAdapter.FeaturedAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.FeaturedHelperClass;
+import com.mit.tujour.HelperClasses.HomeAdapter.FeaturedViewInterface;
 import com.mit.tujour.HelperClasses.HomeAdapter.MostViewAdapter;
 import com.mit.tujour.HelperClasses.HomeAdapter.MostViewedHelperClass;
 import com.mit.tujour.MainActivityWeather;
@@ -33,9 +37,11 @@ import com.mit.tujour.model.Indonesia_package;
 
 import java.util.ArrayList;
 
-public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class UserDashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FeaturedViewInterface {
 
     //Variables
+
+    private FeaturedViewInterface featuredViewInterface;
     RecyclerView featuredRecycler;
     RecyclerView categoriesRecyler;
     RecyclerView mostviewedRecycler;
@@ -109,6 +115,19 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         startActivity(intent);
     }
 
+    public void clickOnHotel(View view){
+        Toast.makeText(this, "Coming soon...", Toast.LENGTH_SHORT).show();
+    }
+
+    public void clickOnHospitals(View view){
+        Toast.makeText(this, "Coming soon...", Toast.LENGTH_SHORT).show();
+    }
+    public void clickOnMedical(View view){
+        Toast.makeText(this, "Coming soon...", Toast.LENGTH_SHORT).show();
+    }
+
+    
+
     //Navigation Drawer Functions
     private void navigationDrawer() {
         //Navigation Drawer
@@ -170,6 +189,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
             case R.id.nav_all_categories:
                 startActivity(new Intent(getApplicationContext(),AllCategories.class));
                 break;
+
+            case R.id.nav_login:
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                break;
+
+            case R.id.nav_logout:
+                startActivity(new Intent(getApplicationContext(), Signup.class));
+                break;
         }
 
         return true;  // <--True means, there is some navigation icon that needs to be selected
@@ -225,7 +252,7 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
         featuredLocations.add(new FeaturedHelperClass(R.drawable.thailand_img, "Thailand", "They say do what you love’ so I travelled to Thailand."));
         featuredLocations.add(new FeaturedHelperClass(R.drawable.japan_img, "Japan", "Happiness is going on a sushi date in Japan."));
         featuredLocations.add(new FeaturedHelperClass(R.drawable.hongkong_img, "Hong kong", "Hong Kong is really all that and dim sum."));
-        adapter = new FeaturedAdapter(featuredLocations);
+        adapter = new FeaturedAdapter(featuredLocations, this); //
         featuredRecycler.setAdapter(adapter);
 
 
@@ -233,13 +260,14 @@ public class UserDashboard extends AppCompatActivity implements NavigationView.O
 
     }
 
-    public void clickOnFeaturedLoc(View view){
-        Intent intent = new Intent(getApplicationContext(), Indonesia_package.class);
-        startActivity(intent);
-    }
-
     public void callRetailerScreens(View view){
         startActivity(new Intent(getApplicationContext(), RetailerStartUpScreen.class));
+    }
+
+    @Override
+    public void onFeaturedItemClick(int position) {
+        Intent intent = new Intent(this, Indonesia_package.class);
+        startActivity(intent);
     }
 }
 

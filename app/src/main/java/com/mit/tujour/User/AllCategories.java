@@ -1,12 +1,14 @@
 package com.mit.tujour.User;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.mit.tujour.MainActivityWeather;
 import com.mit.tujour.R;
 
 public class AllCategories extends AppCompatActivity {
@@ -28,5 +30,14 @@ public class AllCategories extends AppCompatActivity {
                 AllCategories.super.onBackPressed();
             }
         });
+    }
+    public void callWeatherCategory(View view){
+        Intent intent = new Intent(this, MainActivityWeather.class);
+        startActivity(intent);
+    }
+
+    public void callRestaurantCategory(View view){
+        Intent intent = new Intent(this, MainActivityWeather.class);
+        startActivity(intent);
     }
 }

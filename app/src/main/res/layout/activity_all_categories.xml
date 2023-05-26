@@ -49,12 +49,14 @@
             android:layout_height="190dp">
 
             <RelativeLayout
+                android:id="@+id/weather_category"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
+                android:onClick="callWeatherCategory"
                 android:background="@drawable/round_bk11">
 
                 <TextView
@@ -62,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/advent_pro_bold"
                     android:padding="25dp"
-                    android:text="@string/cab_booking"
+                    android:text="@string/weather"
                     android:textColor="@color/black"
                     android:textSize="30sp" />
 
@@ -79,10 +81,10 @@
             </RelativeLayout>
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/categories_cab_icon"
-                android:layout_marginTop="-15dp"
+                android:layout_width="120dp"
+                android:layout_height="130dp"
+                android:src="@drawable/sun"
+                android:layout_marginTop="-10dp"
                 android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
@@ -99,7 +101,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="@drawable/round_bk10">
+                android:background="@drawable/round_bk10"
+                android:onClick="callRestaurantCategory">
 
                 <ImageView
                     android:layout_width="120dp"

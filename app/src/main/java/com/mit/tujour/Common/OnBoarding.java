@@ -55,6 +55,11 @@ public class OnBoarding extends AppCompatActivity {
     public void skip(View view){
 startActivity(new Intent(this, UserDashboard.class));
     }
+
+    public void clickToOpenUserdashboard(View view){
+        Intent intent = new Intent(this, UserDashboard.class);
+        startActivity(intent);
+    }
     public void next(View view){
     viewPager.setCurrentItem(currentPos+1);
     }

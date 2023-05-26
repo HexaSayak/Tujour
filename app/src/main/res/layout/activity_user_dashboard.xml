@@ -126,14 +126,14 @@
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/restaurant_icon" />
+                                android:src="@drawable/weather_logo" />
 
                         </RelativeLayout>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/restaurants"
+                            android:text="@string/weather"
                             android:textAlignment="center" />
 
                     </LinearLayout>
@@ -141,7 +141,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="clickOnHotel">
 
                         <RelativeLayout
                             android:layout_width="60dp"
@@ -169,7 +170,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="clickOnHospitals">
 
                         <RelativeLayout
                             android:layout_width="60dp"
@@ -197,7 +199,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:onClick="clickOnMedical">
 
                         <RelativeLayout
                             android:layout_width="60dp"
@@ -229,8 +232,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/banner_background_light"
-                    android:onClick="clickOnFeaturedLoc">
+                    android:background="@color/banner_background_light">
 
                     <LinearLayout
                         android:id="@+id/featured_background"
